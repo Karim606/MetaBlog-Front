@@ -1,0 +1,28 @@
+<main class="welcome-container">
+    <div class="main-logo">
+      <img src="/logo.ico" alt="MetaBlog Logo" class="logo-image " />
+    </div>
+
+<h1 class="heading"> Welcome to <span class="blog-part">Metablog</span></h1>
+<p class="description">
+    A place where ideas flourish. Join our community to share your stories, 
+    discover new perspectives, and engage with passionate bloggers from around the world.
+</p>
+
+<div class="action-buttons">
+    <button id="loginbtn" routerLink="/login" class="btn btn-primary" (click)="onLogin()">Login</button>
+    <button id="registerbtn" routerLink="/register" class="btn btn-secondary" (click)="onRegister()">Register</button>
+</div>
+
+<div class="divider-text">Explore our features</div>
+
+<div class="features-grid">
+@for (feature of features; track feature.title) {
+  <app-welcome-card
+    class="feature-welcomcard"
+    [iconName]="feature.iconName"
+    [title]="feature.title">
+  </app-welcome-card>
+}
+</div>
+</main>

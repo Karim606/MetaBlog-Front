@@ -1,0 +1,21 @@
+.icon-circle{
+    width: 60px;
+    height: 60px;
+    border-radius: 10%;
+    background-color: var(--color-light-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+}
+.icon-class {
+    font-size: 24px;
+    color: var(--color-primary);
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    text-align: center;
+}

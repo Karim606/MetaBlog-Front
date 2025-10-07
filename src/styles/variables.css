@@ -1,0 +1,10 @@
+
+:root {
+  --color-primary: #1193d4; 
+  --color-light-primary:#c7e2f0;       /* The main brand blue */
+  --color-dark: #0f172a;           /* Dark text color */
+  --color-text-medium: #555;    /* Medium gray for descriptions */
+  --color-text-light: #aaa;        /* Light gray for the divider text */
+  --color-border: #e2e8ed;   
+        /* Border color */
+}

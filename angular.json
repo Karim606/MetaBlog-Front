@@ -21,11 +21,12 @@
             "assets": [
               {
                 "glob": "**/*",
+		"input":"src/assets",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles/styles.css"
             ]
           },
           "configurations": {
@@ -78,11 +79,12 @@
             "assets": [
               {
                 "glob": "**/*",
+		"input":"src/assets",
                 "input": "public"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles/styles.css"
             ]
           }
         }
