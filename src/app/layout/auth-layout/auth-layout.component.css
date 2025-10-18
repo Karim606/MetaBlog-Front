@@ -1,0 +1,81 @@
+
+:host {
+    --auth-logo-size: 60px;
+}
+
+/* Auth Layout Header */
+.auth-header {
+ display: flex;
+ justify-content: center;
+ background-color: white;
+ align-items: center;
+ padding: 1rem;
+ border-bottom:2px solid var(--color-light-primary);
+  gap:5rem;
+  
+ 
+}
+
+/* Logo Container */
+.auth-logo-img {
+width:var(--auth-logo-size);
+height:var(--auth-logo-size);
+border-radius: 50%;
+text-align: center;
+align-content: center;
+}
+.auth-logo-img img {
+  height: var(--auth-logo-size);
+
+}
+/* Navigation Links */
+.auth-nav{
+    background-color: var(--color-light-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    
+}
+ .auth-nav-links {
+  display: flex;
+  list-style: none;
+ }
+.auth-nav-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+    margin-left: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1.4rem;
+
+    }
+
+.auth-nav:hover{
+      border: 3px solid var(--color-primary);
+      background-color: white;
+      cursor: pointer;
+    }
+
+.auth-nav-links a:hover {
+    color: var(--color-dark); 
+    
+}
+
+/* 🎨 NEW: Active/Current page link style */
+.auth-nav-links a.active {
+    color: var(--color-primary); /* Primary color */
+
+  }
+
+
+
+/* Responsive Adjustments */
+    @media (max-width: 270px) {
+
+  .auth-nav-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+}

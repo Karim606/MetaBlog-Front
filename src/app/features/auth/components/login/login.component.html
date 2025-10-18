@@ -1,0 +1,37 @@
+
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="heading">
+            <h2 class="head">Join Metablog today</h2>
+            <p class="descrip">create your account to start blogging</p>
+        </div>
+        
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input id="email"  autocomplete="email" type="email" formControlName="email" required title="Enter your email address" placeholder="Email address"/>
+            @if(form.controls['email'].touched && form.controls['email'].invalid) {
+                <small class="error">Please enter a valid email address.</small>
+            }
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input id="password" autocomplete="current-password" type="password" formControlName="password" required title="Enter your password" placeholder="Password"/>
+        @if(form.controls['password'].touched && form.controls['password'].invalid) {
+                <small class="error">Please enter a valid email address.</small>
+            }
+        </div>
+
+        <button class="submit-btn" type="submit" [disabled]="!form.valid">Login</button>
+
+        <p class="separator">Or continue with</p>
+        
+        <button class="google-btn" type="button" title="Sign in with Google" aria-label="Sign in with Google">
+                <a routerLink=""><img class="google-icon" src="google.svg" alt="Google icon"></a>
+        </button>
+
+        <div class="alternative-options">
+            <a routerLink="/forgot-password" class="link">Forgot Password ?</a>
+            <p>Don't have an account ? <a routerLink="/register" class="link">Register here</a></p>
+        </div>
+
+    </form>

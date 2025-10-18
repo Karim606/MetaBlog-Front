@@ -1,0 +1,78 @@
+.profile-image-upload {
+    margin: 1rem 0;
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img-label{
+    cursor: pointer;
+    width:clamp(150px,50vw,300px);
+    aspect-ratio:1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px dashed var(--color-text-medium);
+    overflow: hidden;
+
+}
+
+.profile-image-upload .profile-preview-img{
+    object-fit: cover;
+    width:100%
+
+}
+
+.profile-image-upload .default-preview{
+    padding:20px;
+    object-fit: contain;
+    width:50%;
+}
+
+
+/* Cropper modal */
+
+
+
+.cropper-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap:2rem;
+
+}
+ .btn {
+  padding: 1rem;
+    border: none;
+    transition: all .3s ease;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin:1rem 0;
+}
+
+.cropper-actions .done-btn{
+        background-color: var(--color-primary);
+        color: white;
+}
+
+.cropper-actions .done-btn:hover{
+        background-color:white;
+        color: var(--color-primary);
+        border: 1px solid var(--color-primary);
+}
+
+
+ .cancel-btn{
+        background-color: var(--color-danger);
+        color: white;
+}
+
+.cropper-actions .cancel-btn:hover{
+        background-color:white;
+        color: var(--color-danger);
+        border:1px solid var(--color-danger);
+}

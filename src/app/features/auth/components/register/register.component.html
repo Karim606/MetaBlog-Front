@@ -1,0 +1,123 @@
+
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+       <div class="heading">
+            <h2 class="head">Join Metablog today</h2>
+            <p class="descrip">create your account to start blogging</p>
+        </div>
+        
+        <div class="profile-image-upload">
+            <label for="profile-image" class="profile-img-label" for="profile-image">
+                @if(!croppedImage&&!imageChangedEvent){
+                    <img  src="/upload-photo.svg" alt="upload-image"  class=" default-preview" />
+                    }
+                    @else if (imageChangedEvent&&!croppedImage) {
+                        <image-cropper class="cropper"
+                            [imageChangedEvent]="imageChangedEvent"
+                            [maintainAspectRatio]="true"
+                            [aspectRatio]="1 / 1"
+                            [resizeToWidth]="300"
+                            [resizeToHeight]="300"
+                            format="webp"
+                            (imageCropped)="onImageCropped($event)">
+                        </image-cropper>
+                    }
+
+                @else if(croppedImage) {
+                <img  [src]="croppedImage" alt="Profile Image Preview"  class="profile-preview-img" />
+                }
+            </label>
+            @if(!imageChangedEvent&&!croppedImage){
+            <input id="profile-image" type="file" accept="image/*" hidden (change)="onSelectFile($event)">
+            }
+        </div>
+        @if(imageChangedEvent&&!croppedImage){
+        <div class="cropper-actions">
+            <button class="btn done-btn" type="button" (click)="confirmCrop()">Done</button>
+            <button class="btn cancel-btn" type="button" (click)="cancelCrop()">Cancel</button>
+        </div>
+        }
+        @else if(croppedImage){
+            <button type="button" class="btn cancel-btn" (click)="cancelCrop()">Remove</button>
+        }
+       
+
+        <div class="input-group">
+            <label for="email">Email:</label>
+            <input id="email" autocomplete="email" type="email" formControlName="email" required title="Enter your email address" placeholder="Email address">
+            @if(form.controls['email'].touched && form.controls['email'].invalid) {
+                <small class="error">Please enter a valid email address.</small>
+            }
+        </div>
+
+        <div class="input-group">
+            <label for="firstName">First name:</label>
+            <input id="firstName" formControlName="firstName" required title="Enter your first name" placeholder="First name">
+            @if(form.controls['firstName'].touched && form.controls['firstName'].invalid){
+                <small class="error">First name is required.</small>
+            }
+        </div>
+        <div class="input-group">
+            <label  for="lastName">Last name:</label>
+            <input id="lastName" formControlName="lastName" required title="Enter your last name" placeholder="Last name">
+            @if(form.controls['lastName'].touched && form.controls['lastName'].invalid){
+                <small class="error">Last name is required.</small>
+            }
+        </div>
+
+        <div class="input-group">
+            <label  for="password">Password:</label>
+            <input id="password" type="password" formControlName="password" required title="Enter your password" placeholder="Password">
+            @if (form.controls['password'].touched && form.controls['password'].invalid) {
+                <div class="error-message">
+                    @if (form.controls['password'].errors?.['required']) {
+                        <p class="error">Password is required.</p>
+                    }
+
+                    @if (form.controls['password'].errors?.['minlength']) {
+                        <p class="error">
+                        Password must be at least 
+                        {{ form.controls['password'].errors?.['minlength'].requiredLength }} 
+                        characters long.
+                        </p>
+                    }
+
+                    @if (form.controls['password'].errors?.['noUpperCase']) {
+                        <p class="error">Password must contain at least one uppercase.</p>
+                    }
+
+                    @if (form.controls['password'].errors?.['noLowerCase']) {
+                        <p class="error">Password must contain at least one lowercase.</p>
+                    }
+
+                    @if (form.controls['password'].errors?.['noNumber']) {
+                        <p class="error">Password must contain at least one number.</p>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="input-group">
+            <label for="confirmPassword">Confirm Password:</label>
+            <input id="confirmPassword" type="password" formControlName="confirmPassword" required title="Confirm your password" placeholder="Confirm password">
+            @if(form.controls['confirmPassword'].touched && form.controls['confirmPassword'].invalid){
+                <p class="error">Confirm Password name is required.</p>
+            }
+            @if(form.errors?.['notMatching'] && form.controls['confirmPassword'].touched){
+                <p class="error">Passwords are not matched. </p>
+            }
+        </div>
+
+        <div class="input-group">
+            <label for="bio">Bio:</label>
+            <textarea id="bio" formControlName="bio"  title="Enter your bio" placeholder="Short bio(optional)"></textarea>
+        </div>
+        <button type="button" (click)="validate()">validate</button>
+        <button class="submit-btn" type="submit" [disabled]="!form.valid">Create Account</button>
+
+        <p class="separator">Or continue with</p>
+
+        <div class="alternative-options">
+            <p>Already have an account ?<a class="link" routerLink="/login">Login</a></p>
+        </div>
+
+    </form>

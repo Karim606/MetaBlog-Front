@@ -1,4 +1,4 @@
-<main class="welcome-container">
+<main class="welcome-container container">
     <div class="main-logo">
       <img src="/logo.ico" alt="MetaBlog Logo" class="logo-image " />
     </div>
@@ -14,7 +14,7 @@
     <button id="registerbtn" routerLink="/register" class="btn btn-secondary" (click)="onRegister()">Register</button>
 </div>
 
-<div class="divider-text">Explore our features</div>
+<p class="separator">Explore our features</p>
 
 <div class="features-grid">
 @for (feature of features; track feature.title) {

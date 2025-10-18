@@ -12,7 +12,6 @@ html {
   justify-content: center;
   padding: 2rem;
   min-height: 100vh;
-  background-color: #f6f7f8;
   text-align: center;
 }
 
@@ -79,16 +78,16 @@ html {
   color: var(--color-primary);
 }
 
-/* Divider */
-.divider-text {
+/* Separator */
+.separator {
   margin: 2rem 0;
   color: var(--color-text-medium);
   font-size: 1.4rem;
   position: relative;
 }
 
-.divider-text::before,
-.divider-text::after {
+.separator::before,
+.separator::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -97,12 +96,12 @@ html {
   background-color: var(--color-text-medium);
 }
 
-.divider-text::before {
+.separator::before {
   left: 110%;
   
 }
 
-.divider-text::after {
+.separator::after {
   right: 110%;
 }
 
@@ -128,8 +127,8 @@ html {
 
 /* 📱 Small screens (phones) */
 @media (max-width: 360px) {
-  .divider-text::before,
-.divider-text::after {
+  .separator::before,
+.separator::after {
     width: 0;
   }
 }
