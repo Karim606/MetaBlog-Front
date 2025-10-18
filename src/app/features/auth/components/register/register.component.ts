@@ -1,13 +1,14 @@
 import { Component, DebugElement } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule,Validators,AbstractControl} from "@angular/forms";
 import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 
 @Component({
   selector: "app-register",
   templateUrl: "./register.component.html",
     styleUrls: ["../../shared/styles/form.css","./register.component.css"],
-    imports: [ReactiveFormsModule, FormsModule, ImageCropperComponent]
+    imports: [ReactiveFormsModule, FormsModule, ImageCropperComponent,RouterModule]
 
 })
 
@@ -65,6 +66,8 @@ form = new FormGroup({
 
   validate(){console.log(this.form);}
 
+
+  //-----------------------------------------------------------------------
   //custom validators
   // Custom validator for uppercase
 containsUppercase(control: AbstractControl) {

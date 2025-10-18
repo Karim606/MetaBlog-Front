@@ -111,13 +111,12 @@
             <label for="bio">Bio:</label>
             <textarea id="bio" formControlName="bio"  title="Enter your bio" placeholder="Short bio(optional)"></textarea>
         </div>
-        <button type="button" (click)="validate()">validate</button>
         <button class="submit-btn" type="submit" [disabled]="!form.valid">Create Account</button>
 
         <p class="separator">Or continue with</p>
 
         <div class="alternative-options">
-            <p>Already have an account ?<a class="link" routerLink="/login">Login</a></p>
+            <p>Already have an account ?<a class="link" routerLink="/auth/login">Login</a></p>
         </div>
 
     </form>

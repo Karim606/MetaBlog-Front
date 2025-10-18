@@ -1,12 +1,12 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
 import { WelcomeCardComponent } from "../../shared/components/welcome-card/welcome-card.component";
 @Component({
   selector: "app-welcome",
   standalone: true,
   templateUrl: "./welcome.component.html",
   styleUrls: ["./welcome.component.css"],
-  imports: [WelcomeCardComponent]
+  imports: [WelcomeCardComponent,RouterModule]
 
 })
 

@@ -49,7 +49,9 @@ this.currentUser.set(null);
 
 }
 
-
+forgotPassword(email:string){
+    this.http.post(`${this.Api}/auth/forgot-password`,email);
+}
 
   isLoggedIn(): boolean {
     const token = this.tokenService.getAccessToken();
