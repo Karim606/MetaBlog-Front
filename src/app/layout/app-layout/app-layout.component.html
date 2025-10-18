@@ -1,0 +1,28 @@
+
+<div class="layout">
+    <aside class="sidebar">
+        <div class="logo">
+            <h2 class="title">Metablog</h2>
+        </div>
+        <nav class="main-nav">
+         @for(item of navigationItems; track item.label){ 
+            <a [class]="item.active?'active':'' ">
+                <i [class]="item.icon"></i>
+                <span [innerHTML]="item.label"></span>
+            </a>
+            }
+        </nav>
+
+        <nav class="user-nav">
+            @for(item of userItems; track item.label){ 
+            <a [class]="item.active?'active':'' ">
+                <i [class]="item.icon"></i>
+                <span [innerHTML]="item.label"></span>
+            </a>
+            }
+        </nav>
+    </aside>
+    <main class="content">
+        <router-outlet></router-outlet>
+    </main>
+</div>
