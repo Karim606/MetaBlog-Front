@@ -17,12 +17,11 @@ html {
 
 /* Logo */
 .main-logo {
-  width: 10rem; /* 150px */
   height: auto;
   margin-bottom: 2rem;
   padding: 1rem;
-  background-color: var(--color-primary);
-  border-radius: 8%;
+  text-align: center;
+  margin-left: 70px;;
 }
 
 /* Circle icon */
@@ -140,6 +139,10 @@ html {
   .heading {
     font-size: 2.2rem;
   }
+
+  .main-logo {
+  width:200px;
+}
 
   .welcome-container .description {
     font-size: 1.4rem;

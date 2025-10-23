@@ -1,26 +1,28 @@
 
-<div class="layout">
+<div class="app-layout">
     <aside class="sidebar">
         <div class="logo">
-            <h2 class="title">Metablog</h2>
+            <img class="logo-img" src="metablog_logo.svg" alt="metablog_logo" >
         </div>
-        <nav class="main-nav">
+        <nav class="main-nav nav">
          @for(item of navigationItems; track item.label){ 
-            <a [class]="item.active?'active':'' ">
+            <a [class.active]="item.active">
                 <i [class]="item.icon"></i>
-                <span [innerHTML]="item.label"></span>
+                <span class="item-label" [innerHTML]="item.label"></span>
             </a>
             }
+
+            <section class="user-nav nav">
+            @for(item of userItems; track item.label){ 
+            <a [class.active]="item.active">
+                <i [class]="item.icon"></i>
+                <span class="item-label" [innerHTML]="item.label"></span>
+            </a>
+            }
+            
+        </section>
         </nav>
 
-        <nav class="user-nav">
-            @for(item of userItems; track item.label){ 
-            <a [class]="item.active?'active':'' ">
-                <i [class]="item.icon"></i>
-                <span [innerHTML]="item.label"></span>
-            </a>
-            }
-        </nav>
     </aside>
     <main class="content">
         <router-outlet></router-outlet>

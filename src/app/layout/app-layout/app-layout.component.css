@@ -1,0 +1,123 @@
+:host{
+    --var-main-padding:1rem;
+}
+
+.app-layout{
+    display: flex;
+    background-color: var(--background-color);
+}
+
+.app-layout .sidebar{
+    border-right: 2px solid var(--color-border);
+    height: 100vh;
+    width:200px;
+    padding: var(--var-main-padding);
+    color:var(--color-dark);
+    flex-shrink: 0;
+    position: sticky;    /* full width */
+    top: 0;
+    z-index: 10;
+}
+
+.app-layout .logo-img{
+    width:100%;
+}
+.app-layout .nav {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    font-size: 1.5rem;
+}
+
+.app-layout .nav .item-label {
+    margin-left:5px
+}
+
+.app-layout .content{
+    margin:0 auto;
+    flex:1;
+    padding: var(--var-main-padding) 0;
+}
+
+.app-layout .main-nav{
+    margin-top:1rem;
+}
+
+.app-layout .main-nav a{
+    border-radius: 5px;
+    padding: 4px;
+}
+
+.app-layout .main-nav .active{
+    color: var(--color-primary);
+    font-weight: 600;
+    background-color:rgba(17, 147, 208, .2);
+}
+
+/*/////////////////responsive////////////////////////////////*/
+
+@media (max-width: 768px) {
+    .app-layout {
+         flex-direction: column;/* stack sidebar on top */
+    }
+    .sidebar {
+        width: 100%;        
+        background-color: white;
+    }
+
+    .app-layout .logo{
+    width:180px;
+    flex-shrink: 0;
+    }
+    .content {
+        flex: none;             /* normal flow */
+    }
+
+    .app-layout .sidebar{
+    border-right: 0;
+    border-bottom: 2px solid var(--color-border);
+    height: fit-content;
+    width:100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.app-layout .nav {
+
+    font-size: 1.5rem;
+    flex-direction: row;
+}
+
+.app-layout .user-nav{
+    margin-left:1rem;
+}
+
+    .app-layout .nav a i {
+        font-size: 1.4rem;  /* smaller icons */
+    }
+    .app-layout .nav .item-label {
+        display: none;  /* hide labels to save space */
+    }
+
+
+.app-layout .main-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.app-layout .nav a {
+    scroll-snap-align: start;
+    flex: 0 0 auto;  /* prevent shrinking */
+}
+
+.user-nav{
+padding-left: 1rem;
+}
+
+
+.app-layout .content{
+    margin:0 ;
+}
+}

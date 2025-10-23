@@ -17,7 +17,7 @@ export class AppLayoutComponent  {
         {label:'Bookmarks',icon:"fa-regular fa-bookmark",active:false}
     ]
     userItems = [
-        {label:'profile',icon:"fa-regular fa-user",active:false},
+        {label:'Profile',icon:"fa-regular fa-user",active:false},
         {label:'Settings',icon:"fa-solid fa-gear",active:false}
     ]
 }

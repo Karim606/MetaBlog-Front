@@ -17,15 +17,10 @@
 }
 
 /* Logo Container */
-.auth-logo-img {
-width:var(--auth-logo-size);
-height:var(--auth-logo-size);
-border-radius: 50%;
-text-align: center;
-align-content: center;
-}
+
 .auth-logo-img img {
   height: var(--auth-logo-size);
+  text-align: center;
 
 }
 /* Navigation Links */
@@ -78,4 +73,18 @@ align-content: center;
     align-items: stretch;
   }
 
+}
+
+@media(max-width:515px) {
+  .auth-logo-img img {
+    width:150px;
+
+}
+
+.auth-header {
+
+  gap:1rem;
+  
+ 
+}
 }

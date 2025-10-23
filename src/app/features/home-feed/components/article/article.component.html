@@ -1,0 +1,38 @@
+<article class="article">
+    <div class="user-details">
+        <div class="profile-image">
+            <img class="image" src="profile_img.jpg" alt="profile-img"/>
+        </div>
+        <h3 class="user-name">alexcollado</h3>
+    </div>
+    <div class="article-content">
+        <h2 class="title">lorem</h2>
+        <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Beatae ipsam nulla cupiditate nesciunt dolor dolorem maiores quibusdam tempora 
+            culpa tempore repudiandae deleniti vitae quas maxime, porro unde.
+            Eligendi, doloremque corporis?
+            Beatae ipsam nulla cupiditate nesciunt dolor dolorem maiores quibusdam tempora 
+            culpa tempore repudiandae deleniti vitae quas maxime, porro unde.
+            Eligendi, doloremque corporis?
+            Beatae ipsam nulla cupiditate nesciunt dolor dolorem maiores quibusdam tempora 
+            culpa tempore repudiandae deleniti vitae quas maxime, porro unde.
+            Eligendi, doloremque corporis?
+        </p>
+    </div>
+
+    <div class="article-image">
+        <img class="image" src="post_image.jpeg" alt="article-img"/>
+    </div>
+
+    <div class="article-reacts">
+        <ul class="reacts-list">
+            @for(reactItem of reacts; track reactItem.icon){
+                <li class="react">
+                    <i [class]=" reactItem.icon +' icon'"></i>
+                    <span class="total-num" [innerHTML]="reactItem.totalNum"></span>
+                </li>
+            }
+        </ul>
+    </div>
+    
+</article>
