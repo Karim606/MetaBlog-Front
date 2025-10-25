@@ -6,8 +6,8 @@ import { Router, RouterModule } from "@angular/router";
 
 @Component({
     selector:"app-reset-password",
-    templateUrl:"./reset-password.html",
-    styleUrls:["./reset-password.css","../../shared/styles/form.css"],
+    templateUrl:"./reset-password.component.html",
+    styleUrls:["./reset-password.component.css","../../shared/styles/form.css"],
     imports: [FormsModule,RouterModule,ReactiveFormsModule]
 })
 

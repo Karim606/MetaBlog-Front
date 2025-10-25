@@ -5,8 +5,8 @@ import { RouterModule } from "@angular/router";
 
 @Component({
     selector:"app-forgot-password-sent",
-    templateUrl:"./request-sent.html",
-    styleUrls:["./request-sent.css","../../../shared/styles/form.css"],
+    templateUrl:"./request-sent.component.html",
+    styleUrls:["./request-sent.component.css","../../../shared/styles/form.css"],
     imports: [RouterModule]
 })
 

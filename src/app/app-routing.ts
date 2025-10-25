@@ -3,9 +3,9 @@ import { WelcomeComponent } from './features/welcome/welcome.component';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { LoginComponent } from './features/auth/components/login/login.component';
 import { RegisterComponent } from './features/auth/components/register/register.component';
-import {ForgotPasswordComponent} from './features/auth/components/forgot-password/forgot-password'
-import { ForgotPasswordSentComponent } from './features/auth/components/forgot-password/request-sent/request-sent';
-import { ResetPasswordComponent } from './features/auth/components/reset-password/reset-password';
+import {ForgotPasswordComponent} from './features/auth/components/forgot-password/forgot-password.component'
+import { ForgotPasswordSentComponent } from './features/auth/components/forgot-password/request-sent/request-sent.component';
+import { ResetPasswordComponent } from './features/auth/components/reset-password/reset-password.component';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { HomeComponent } from './features/home-feed/components/home/home.component';
 export const routes: Routes = [
