@@ -39,7 +39,8 @@
         @else if(croppedImage){
             <button type="button" class="btn cancel-btn" (click)="cancelCrop()">Remove</button>
         }
-       
+
+        <small class="error">{{serverError?serverError:""}}</small>
 
         <div class="input-group">
             <label for="email">Email:</label>
@@ -105,6 +106,17 @@
             @if(form.errors?.['notMatching'] && form.controls['confirmPassword'].touched){
                 <p class="error">Passwords are not matched. </p>
             }
+        </div>
+
+        <div class="input-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" formControlName="dob" />
+            @if(form.get('dob')?.errors?.['required'] &&form.controls['dob'].touched){
+                <p class="error">Date of birth is required. </p>
+            }   
+            @if(form.get('dob')?.errors?.['invalidDob'] &&form.controls['confirmPassword'].touched){
+                <p class="error">{{form.get('dob')?.errors?.['invalidDob']}} </p>
+            } 
         </div>
 
         <div class="input-group">

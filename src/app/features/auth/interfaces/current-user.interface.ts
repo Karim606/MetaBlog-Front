@@ -1,6 +1,6 @@
 export interface CurrentUser{
     email:string,
     id:string,
-    roles:Array<string>,
+    role:Array<string>,
     name:string;
 }

@@ -6,7 +6,9 @@ import { TokenService } from "./tokenservice";
 import {AuthResponse} from "../interfaces/auth-response.interface";
 import {jwtDecode} from "jwt-decode";
 import { CurrentUser } from "../interfaces/current-user.interface";
-
+import {environment} from '../../../../environments/environment'
+import { RegisterUserDto } from "../Dtos/register-user.dto";
+import { StoredAuth } from "../interfaces/stored-auth.interface";
 @Injectable({
     providedIn:"root"
 })
@@ -17,27 +19,25 @@ private currentUser = signal<CurrentUser|null>(null)
 
 private refreshInProgress = false;
 
-private Api="api/";
+private Api=environment.apiUrl;
 
-constructor(private http:HttpClient,private tokenService:TokenService){
-    this.currentUser.set(this.tokenService.getUser());
+public constructor(private http:HttpClient,private tokenService:TokenService){
+    
 }
 
 
 login (email:string, password:string):Observable<any>{
-    return this.http.post<AuthResponse>(`${this.Api}/login`,{email,password})
+    return this.http.post<AuthResponse>(`${this.Api}auth/login`,{email,password})
     .pipe(
         tap(res =>this.storeAuthResponse(res)),
-        map(res => res.user ?? null),
         catchError(this.handleError)
     );
 }
 
-register (payload:any){
-    return this.http.post<AuthResponse>(`${this.Api}/auth/register`,payload)
+register (payload:RegisterUserDto){
+    return this.http.post<AuthResponse>(`${this.Api}auth/register`,payload)
     .pipe(
         tap(res => this.storeAuthResponse(res)),
-        map(res =>res.user??null),
         catchError(this.handleError)
     )
 
@@ -50,8 +50,19 @@ this.currentUser.set(null);
 }
 
 forgotPassword(email:string){
-    this.http.post(`${this.Api}/auth/forgot-password`,email);
+    return this.http.post(`${this.Api}auth/forgot-password`,{email})
 }
+
+resetPassword(email:string|null,token:string|null,password:string|null){
+    const payload = {
+        'token':token,
+        'email':email,
+        'newPassword':password
+    };
+
+    return this.http.post(`${this.Api}auth/reset-password`,payload)
+}
+
 
   isLoggedIn(): boolean {
     const token = this.tokenService.getAccessToken();
@@ -59,7 +70,7 @@ forgotPassword(email:string){
   }
 
   refreshToken(){
-    return this.http.post<AuthResponse>(`${this.Api}/refresh`,"hello")
+    return this.http.post<AuthResponse>(`${this.Api}auth/refresh`,null)
     .pipe(
         tap(
             res=>{this.storeAuthResponse(res)}
@@ -68,14 +79,27 @@ forgotPassword(email:string){
   }
 /////////////////////////////////////////////////////////////////////
 private storeAuthResponse(res:AuthResponse){
-    const expiresAt = res.expiresIn ? Date.now()+res.expiresIn*60*1000:undefined;
-        this.tokenService.saveToken({accessToken:res.accessToken,
-        expiresAt:expiresAt,
-    });
-    this.currentUser.set(jwtDecode<CurrentUser>(res.accessToken)?? null);
+        const payload = jwtDecode(res.accessToken)?? null;
+
+        const storedAuth:StoredAuth = {accessToken:res.accessToken,
+            expiresAt:payload.exp
+        }
+        const payloadTyped=payload as CurrentUser;
+
+        const user:CurrentUser={
+            id:payloadTyped.id,
+            email:payloadTyped.email,
+            role:payloadTyped.role,
+            name:payloadTyped.name
+        };
+
+        this.currentUser.set(payloadTyped);
+
+        this.tokenService.saveToken(storedAuth);
 }
 
 private handleError(err:HttpErrorResponse){
+    console.log(err.message);
     if(err.error&&err.error.message){
         return throwError(() => new Error(err.error.message));
     }

@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, NgForm, Validators,AbstractControl, ReactiveFormsModule } from "@angular/forms";
-import { Router, RouterModule } from "@angular/router";
+import { ActivatedRoute, Router, RouterModule } from "@angular/router";
+import { AuthService } from "../../services/authservice";
 
 
 
@@ -13,7 +14,7 @@ import { Router, RouterModule } from "@angular/router";
 
 export class ResetPasswordComponent{
 
-    constructor(private router:Router){
+    constructor(private router:Router,private Route:ActivatedRoute,private authService:AuthService){
 
     }
 form = new FormGroup({
@@ -33,7 +34,16 @@ form = new FormGroup({
         if(this.form.invalid)
             return
         
-        this.router.navigateByUrl("/auth/login");
+      const token =  this.Route.snapshot.queryParamMap.get('token');
+      const email = this.Route.snapshot.queryParamMap.get('email');
+      this.authService.resetPassword(email,token,this.form.controls['password'].value).subscribe({
+        next:(res)=> {console.log('reset password done successfully',res);
+          this.router.navigateByUrl('/auth/login');
+        },
+        error:(e)=> console.log('reset password failed',e)
+      }
+      );
+
         
     }
 

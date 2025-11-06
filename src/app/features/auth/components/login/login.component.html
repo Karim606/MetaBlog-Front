@@ -4,7 +4,7 @@
             <h2 class="head">Join Metablog today</h2>
             <p class="descrip">create your account to start blogging</p>
         </div>
-        
+        <small class="error">{{serverError?serverError:""}}</small>
         <div class="input-group">
             <label for="email">Email</label>
             <input id="email"  autocomplete="email" type="email" formControlName="email" required title="Enter your email address" placeholder="Email address"/>

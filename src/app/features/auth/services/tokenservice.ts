@@ -25,10 +25,6 @@ export class TokenService{
     }
 
     /////////////////getters///////////////
-    public getUser(){
-        return this.memory?.user??null;
-    }
-
     public getAccessToken(){
         return this.memory?.accessToken??null;
     }

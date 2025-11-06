@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormsModule, NgForm, NgModel } from "@angular/forms";
 import { Router, RouterModule } from "@angular/router";
+import { AuthService } from "../../services/authservice";
 
 
 
@@ -13,16 +14,26 @@ import { Router, RouterModule } from "@angular/router";
 
 export class ForgotPasswordComponent{
 
-    constructor(private router:Router){
+    constructor(private router:Router,private authService:AuthService){
 
     }
+    serverError?:string|null;
     email:string="";
 
     onSubmit(form:NgForm){
         if(form.invalid)
             return
-        
-        this.router.navigateByUrl("/auth/forgot-password/sent");
-        console.log("hello");
+        this.authService.forgotPassword(form.value.email as string)
+        .subscribe({
+            next:(res)=>{console.log("✅ successful:",res)
+                this.router.navigateByUrl("/auth/forgot-password/sent");
+            },
+            error:(err)=>{
+                this.serverError=err.error.title;
+                console.log("❌ failed: ",err);
+            }
+        }
+        )
+
     }
 }

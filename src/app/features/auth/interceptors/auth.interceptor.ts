@@ -18,7 +18,7 @@ export class AuthInterceptor implements HttpInterceptor{
 
         return next.handle(authReq).pipe(
             catchError( err=> {
-                if(err instanceof HttpErrorResponse&& err.status==401 )
+                if(err instanceof HttpErrorResponse&& err.status==401&&!(req.url.includes('/auth/login') || req.url.includes('/auth/refresh') ) )
                     return this.handle401(authReq,next);
                 return throwError(() => err);
                 })
@@ -26,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor{
     }
 
     private handle401(req:HttpRequest<any>,next:HttpHandler){
-
+        
         return this.authService.refreshToken().pipe(
             switchMap(res =>{
                 const newToken = res.accessToken;
