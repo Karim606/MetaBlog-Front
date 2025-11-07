@@ -86,6 +86,17 @@
 .reacts-list .react{
     
     font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.react .icon{
+    transition: color 0.3s ease, transform 0.2s ease;
+
+}
+
+.react .icon.active {
+  color: red;
+  transform: scale(1.2);
 }
 
 .reacts-list .react .total-num{

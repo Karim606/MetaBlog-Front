@@ -53,6 +53,22 @@
     font-weight: 600;
     background-color:rgba(17, 147, 208, .2);
 }
+.app-layout .main-nav a:hover:not(.active) {
+  color: var(--color-primary);
+  background-color: rgba(17, 147, 208, 0.1);
+}
+
+.app-layout .main-nav a:not(.active) {
+  cursor: pointer;
+}
+
+.app-layout .main-nav a i {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.app-layout .main-nav a:hover:not(.active) i {
+  transform: scale(1.2);
+}
 
 /*/////////////////responsive////////////////////////////////*/
 

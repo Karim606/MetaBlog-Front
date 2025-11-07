@@ -1,4 +1,31 @@
 <div class="home">
     <home-header></home-header>
-    <app-article></app-article>
+    @for(article of articles; track article.id){
+        <app-article [article]="article" ></app-article>
+    }
+    <!-- Pagination Controls -->
+@if(totalPages>1){
+<nav class="pagination-container">
+  <button
+    [disabled]="page === 1"
+    (click)="changePage(page - 1)">
+    Prev
+  </button>
+
+  @for (p of pages; track p) {
+    <button
+      (click)="changePage(p)"
+      [class.active]="p === page">
+      {{ p }}
+    </button>
+  }
+
+  <button
+    [disabled]="page === totalPages"
+    (click)="changePage(page + 1)">
+    Next
+  </button>
+</nav>
+}
+
 </div>
